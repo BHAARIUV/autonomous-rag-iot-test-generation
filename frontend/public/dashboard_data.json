@@ -1,0 +1,633 @@
+{
+  "overview": {
+    "project_name": "Autonomous RAG-Based IoT Test Generation & Fault Detection Framework",
+    "project_id": "autonomous-rag-iot-test-generation",
+    "project_status": "COMPLETE",
+    "current_phase": 13,
+    "completed_phases": 13,
+    "total_phases": 14,
+    "total_requirements": 4,
+    "total_test_cases": 9,
+    "executed_tests": 8,
+    "passed": 7,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "generation_mode": "MOCK",
+    "analysis_id": "cf4e0fa7695046e1972526466eaaaf4f"
+  },
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "category": "RANGE",
+      "description": "The device shall measure temperatures within the range -40 °C to 125 °C.",
+      "validation_status": "VALIDATED",
+      "test_case_count": 8,
+      "coverage_status": "COVERED"
+    },
+    {
+      "requirement_id": "REQ-002",
+      "category": "ACCURACY",
+      "description": "The device shall report temperature values accurate to within ±0.5 °C.",
+      "validation_status": "Not available",
+      "test_case_count": 0,
+      "coverage_status": "UNCOVERED"
+    },
+    {
+      "requirement_id": "REQ-003",
+      "category": "TIMING",
+      "description": "The device shall produce a new measurement every 1 s.",
+      "validation_status": "Not available",
+      "test_case_count": 0,
+      "coverage_status": "UNCOVERED"
+    },
+    {
+      "requirement_id": "REQ-004",
+      "category": "COMMUNICATION",
+      "description": "The device shall communicate using the MQTT protocol.",
+      "validation_status": "VALIDATED",
+      "test_case_count": 1,
+      "coverage_status": "COVERED"
+    }
+  ],
+  "knowledge": {
+    "corpus_description": "Phase 6 IoT testing knowledge base: 12 discipline documents indexed by the RAG subsystem.",
+    "corpus_version": "1.0",
+    "document_count": 12,
+    "semantic_metrics": false,
+    "documents": [
+      {
+        "document_id": "kb-iot-testing-fundamentals",
+        "title": "IoT Testing Fundamentals",
+        "topic": "iot_testing",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-mqtt-testing",
+        "title": "MQTT Testing",
+        "topic": "mqtt_testing",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-temperature-sensor-testing",
+        "title": "Temperature Sensor Testing",
+        "topic": "temperature_sensor_testing",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-boundary-value-analysis",
+        "title": "Boundary Value Analysis",
+        "topic": "boundary_value_analysis",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-equivalence-partitioning",
+        "title": "Equivalence Partitioning",
+        "topic": "equivalence_partitioning",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-negative-testing",
+        "title": "Negative Testing",
+        "topic": "negative_testing",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-data-validation",
+        "title": "Data Validation",
+        "topic": "data_validation",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-timing-sampling",
+        "title": "Timing and Sampling Tests",
+        "topic": "timing_sampling",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-communication-reliability",
+        "title": "Communication Reliability",
+        "topic": "communication_reliability",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-fault-injection",
+        "title": "Fault Injection",
+        "topic": "fault_injection",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-device-offline-recovery",
+        "title": "Device Offline and Recovery Testing",
+        "topic": "device_offline_recovery",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      },
+      {
+        "document_id": "kb-sensor-accuracy",
+        "title": "Sensor Accuracy Testing",
+        "topic": "sensor_accuracy",
+        "source": "IoT Test Engineering Handbook",
+        "version": "1.0"
+      }
+    ],
+    "requirement_mapping": [
+      {
+        "requirement_id": "REQ-001",
+        "retrieval_count": 24,
+        "topics": [
+          "boundary_value_analysis",
+          "equivalence_partitioning",
+          "negative_testing",
+          "temperature_sensor_testing"
+        ],
+        "sources": [
+          "IoT Test Engineering Handbook"
+        ],
+        "chunks": [
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-negative-testing--chunk-000",
+          "kb-negative-testing--chunk-000",
+          "kb-negative-testing--chunk-000",
+          "kb-negative-testing--chunk-000",
+          "kb-negative-testing--chunk-000",
+          "kb-negative-testing--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000"
+        ]
+      },
+      {
+        "requirement_id": "REQ-002",
+        "retrieval_count": 0,
+        "topics": [],
+        "sources": [],
+        "chunks": []
+      },
+      {
+        "requirement_id": "REQ-003",
+        "retrieval_count": 0,
+        "topics": [],
+        "sources": [],
+        "chunks": []
+      },
+      {
+        "requirement_id": "REQ-004",
+        "retrieval_count": 0,
+        "topics": [],
+        "sources": [],
+        "chunks": []
+      }
+    ],
+    "retrieved_topics": [
+      "boundary_value_analysis",
+      "equivalence_partitioning",
+      "negative_testing",
+      "temperature_sensor_testing"
+    ]
+  },
+  "generation": {
+    "total_generated": 9,
+    "generation_mode": "MOCK",
+    "tests": [
+      {
+        "test_case_id": "TC-001",
+        "requirement_id": "REQ-001",
+        "category": "POSITIVE",
+        "priority": "MEDIUM",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-002",
+        "requirement_id": "REQ-001",
+        "category": "BOUNDARY",
+        "priority": "HIGH",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-003",
+        "requirement_id": "REQ-001",
+        "category": "BOUNDARY",
+        "priority": "HIGH",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-004",
+        "requirement_id": "REQ-001",
+        "category": "NEGATIVE",
+        "priority": "HIGH",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-005",
+        "requirement_id": "REQ-001",
+        "category": "NEGATIVE",
+        "priority": "HIGH",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-006",
+        "requirement_id": "REQ-001",
+        "category": "EQUIVALENCE",
+        "priority": "MEDIUM",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-UNEXEC-001",
+        "requirement_id": "REQ-001",
+        "category": "BOUNDARY",
+        "priority": "HIGH",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-FAULT-001",
+        "requirement_id": "REQ-001",
+        "category": "NEGATIVE",
+        "priority": "HIGH",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      },
+      {
+        "test_case_id": "TC-MQTT-001",
+        "requirement_id": "REQ-004",
+        "category": "COMMUNICATION",
+        "priority": "HIGH",
+        "generation_mode": "MOCK",
+        "validation_status": "VALIDATED",
+        "duplicate_rejected": "Not available"
+      }
+    ]
+  },
+  "execution": {
+    "total_executed": 8,
+    "passed": 7,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "execution_coverage": 88.89,
+    "execution_history": [
+      {
+        "test_case_id": "TC-001",
+        "status": "PASS",
+        "execution_id": "76930c74f6e54e3f9755fc0525269c74"
+      },
+      {
+        "test_case_id": "TC-002",
+        "status": "PASS",
+        "execution_id": "f6be3dd6b4e7478dbe5bf1d2b47a4a2a"
+      },
+      {
+        "test_case_id": "TC-003",
+        "status": "PASS",
+        "execution_id": "c83ac77426a74c5495f34e42156b790e"
+      },
+      {
+        "test_case_id": "TC-004",
+        "status": "PASS",
+        "execution_id": "4efea946409c4f68a6c50d7703c29ba5"
+      },
+      {
+        "test_case_id": "TC-005",
+        "status": "PASS",
+        "execution_id": "5dce277f085c4a40b26ad7bf80d6ca84"
+      },
+      {
+        "test_case_id": "TC-006",
+        "status": "PASS",
+        "execution_id": "d4b7be0090ec47418f5265772e209d1b"
+      },
+      {
+        "test_case_id": "TC-FAULT-001",
+        "status": "FAIL",
+        "execution_id": "43f6a47e699643398d5f8266c4cd9861"
+      },
+      {
+        "test_case_id": "TC-MQTT-001",
+        "status": "PASS",
+        "execution_id": "522adcf5e49645f8a7dab7712d6f4de1"
+      }
+    ]
+  },
+  "fault_summary": {
+    "total_faults": 2,
+    "detected_faults": 1,
+    "missed_faults": 1,
+    "fault_detection_rate": 100.0,
+    "faults": [
+      {
+        "fault_id": "F-MQTT-DISCONNECT",
+        "fault_type": "MQTT_DISCONNECT",
+        "detection_status": "NOT_EXECUTED",
+        "injection_status": "NOT_EXECUTED",
+        "requirement_ids": [],
+        "related_test_case_ids": [],
+        "detection_evidence": "No test injected fault MQTT_DISCONNECT; detection cannot be inferred without execution evidence.",
+        "execution_result": "Not available"
+      },
+      {
+        "fault_id": "F-SENSOR-OOR",
+        "fault_type": "SENSOR_OUT_OF_RANGE",
+        "detection_status": "DETECTED",
+        "injection_status": "INJECTED",
+        "requirement_ids": [
+          "REQ-001"
+        ],
+        "related_test_case_ids": [
+          "TC-FAULT-001"
+        ],
+        "detection_evidence": "Fault SENSOR_OUT_OF_RANGE injected and its assertion FAIL surfaced it in ['TC-FAULT-001'].",
+        "execution_result": "FAIL"
+      }
+    ]
+  },
+  "refinement": {
+    "available": true,
+    "stop_reason": "TARGET_REACHED",
+    "gaps_before": 2,
+    "gaps_after": 2,
+    "coverage_before": 25.0,
+    "coverage_after": 100.0,
+    "improvement_requirement_coverage": 75.0,
+    "total_generated": 13,
+    "total_executed": 13,
+    "iterations": [
+      {
+        "iteration_number": 1,
+        "decision": "REGENERATE",
+        "gap_type": "REQUIREMENT_NO_EXECUTED_TEST",
+        "generated": 4,
+        "executed": 4,
+        "coverage_before": 25.0,
+        "coverage_after": 50.0,
+        "improvement": 25.0
+      },
+      {
+        "iteration_number": 2,
+        "decision": "REGENERATE",
+        "gap_type": "REQUIREMENT_NO_EXECUTED_TEST",
+        "generated": 6,
+        "executed": 6,
+        "coverage_before": 50.0,
+        "coverage_after": 75.0,
+        "improvement": 25.0
+      },
+      {
+        "iteration_number": 3,
+        "decision": "REGENERATE",
+        "gap_type": "REQUIREMENT_NO_EXECUTED_TEST",
+        "generated": 3,
+        "executed": 3,
+        "coverage_before": 75.0,
+        "coverage_after": 100.0,
+        "improvement": 25.0
+      }
+    ]
+  },
+  "traceability": {
+    "rows": [
+      {
+        "requirement_id": "REQ-001",
+        "rag_evidence_count": 24,
+        "rag_evidence": [
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-negative-testing--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-negative-testing--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-negative-testing--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-negative-testing--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-negative-testing--chunk-000",
+          "kb-equivalence-partitioning--chunk-000",
+          "kb-temperature-sensor-testing--chunk-000",
+          "kb-boundary-value-analysis--chunk-001",
+          "kb-negative-testing--chunk-000",
+          "kb-equivalence-partitioning--chunk-000"
+        ],
+        "test_case_ids": [
+          "TC-001",
+          "TC-002",
+          "TC-003",
+          "TC-004",
+          "TC-005",
+          "TC-006",
+          "TC-UNEXEC-001",
+          "TC-FAULT-001"
+        ],
+        "validation_status": "VALIDATED",
+        "execution_ids": [
+          "76930c74f6e54e3f9755fc0525269c74",
+          "f6be3dd6b4e7478dbe5bf1d2b47a4a2a",
+          "c83ac77426a74c5495f34e42156b790e",
+          "4efea946409c4f68a6c50d7703c29ba5",
+          "5dce277f085c4a40b26ad7bf80d6ca84",
+          "d4b7be0090ec47418f5265772e209d1b",
+          "43f6a47e699643398d5f8266c4cd9861"
+        ],
+        "execution_status": "FAIL, PASS",
+        "fault_types": [
+          "SENSOR_OUT_OF_RANGE"
+        ],
+        "fault_detection": "Detected",
+        "coverage": "COVERED",
+        "refined": true
+      },
+      {
+        "requirement_id": "REQ-002",
+        "rag_evidence_count": 0,
+        "rag_evidence": [],
+        "test_case_ids": [],
+        "validation_status": "Not available",
+        "execution_ids": [],
+        "execution_status": "Not available",
+        "fault_types": [],
+        "fault_detection": "Not available",
+        "coverage": "UNCOVERED",
+        "refined": false
+      },
+      {
+        "requirement_id": "REQ-003",
+        "rag_evidence_count": 0,
+        "rag_evidence": [],
+        "test_case_ids": [],
+        "validation_status": "Not available",
+        "execution_ids": [],
+        "execution_status": "Not available",
+        "fault_types": [],
+        "fault_detection": "Not available",
+        "coverage": "UNCOVERED",
+        "refined": false
+      },
+      {
+        "requirement_id": "REQ-004",
+        "rag_evidence_count": 0,
+        "rag_evidence": [],
+        "test_case_ids": [
+          "TC-MQTT-001"
+        ],
+        "validation_status": "VALIDATED",
+        "execution_ids": [
+          "522adcf5e49645f8a7dab7712d6f4de1"
+        ],
+        "execution_status": "PASS",
+        "fault_types": [],
+        "fault_detection": "Detected",
+        "coverage": "COVERED",
+        "refined": true
+      }
+    ]
+  },
+  "final_status": {
+    "phases": [
+      {
+        "phase_number": 1,
+        "title": "Project setup & skeleton",
+        "status": "COMPLETE",
+        "verification": "python run.py + unit tests"
+      },
+      {
+        "phase_number": 2,
+        "title": "IoT temperature sensor simulator",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_simulator.py"
+      },
+      {
+        "phase_number": 3,
+        "title": "MQTT communication layer",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_mqtt_*.py"
+      },
+      {
+        "phase_number": 4,
+        "title": "Fault injection engine",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_fault_*.py"
+      },
+      {
+        "phase_number": 5,
+        "title": "Requirement extraction",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_spec_*.py"
+      },
+      {
+        "phase_number": 6,
+        "title": "RAG knowledge base & retrieval",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_rag_*.py"
+      },
+      {
+        "phase_number": 7,
+        "title": "LLM test generation + validation",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_llm_*.py"
+      },
+      {
+        "phase_number": 8,
+        "title": "Automated test execution",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_execution_*.py"
+      },
+      {
+        "phase_number": 9,
+        "title": "Coverage & fault analysis",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_analysis_*.py"
+      },
+      {
+        "phase_number": 10,
+        "title": "Final reporting & traceability",
+        "status": "COMPLETE",
+        "verification": "tests/unit/test_reporting_*.py"
+      },
+      {
+        "phase_number": 11,
+        "title": "Autonomous refinement loop",
+        "status": "COMPLETE",
+        "verification": ""
+      },
+      {
+        "phase_number": 12,
+        "title": "Dashboard",
+        "status": "COMPLETE",
+        "verification": ""
+      },
+      {
+        "phase_number": 13,
+        "title": "End-to-end integration",
+        "status": "COMPLETE",
+        "verification": ""
+      },
+      {
+        "phase_number": 14,
+        "title": "Final testing, debugging, documentation",
+        "status": "PENDING",
+        "verification": ""
+      }
+    ],
+    "final_test_result": {
+      "total": 668,
+      "passed": 668,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "requirement_coverage": 50.0,
+    "execution_coverage": 88.89,
+    "fault_detection": 100.0,
+    "remaining_gaps": 2,
+    "known_limitations": [
+      "Offline suite uses the deterministic mock LLM provider; real OpenAI generation is wired but not exercised to avoid API spend.",
+      "Fault detection is keyed by fault type from execution evidence, not by a persisted cross-reference to a single injected fault instance.",
+      "MQTT tests are honest about broker availability: with no reachable broker they are SKIPPED (never faked), which lowers interface coverage in broker-less runs."
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+# ============================================================
+# Autonomous RAG-Based IoT Test Generation and Fault Detection Framework
+# Phase 1: only the packages needed for project setup / config.
+# Later phases (RAG, LLM, MQTT, PyTest, Streamlit, etc.) will
+# append more packages here as we build them.
+# ============================================================
+
+pydantic==2.9.2
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+loguru==0.7.2
+pytest==8.3.3
+paho-mqtt==2.1.0
+
+# Phase 5 (IoT Specification & Requirement Extraction): PDF text extraction.
+pypdf==6.16.2
+
+# Phase 6 (RAG Knowledge Base & Retrieval): local vector store.
+chromadb==1.5.9
+
+# Phase 7 (LLM-Based Test Case Generation): real-provider call is OPTIONAL.
+# The default LLM_PROVIDER=mock needs no extra packages. To call the real
+# OpenAI API, install it explicitly (never auto-installed):  pip install openai

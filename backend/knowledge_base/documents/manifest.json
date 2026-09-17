@@ -1,0 +1,114 @@
+{
+  "corpus_version": "1.0",
+  "description": "Phase 6 IoT testing knowledge base: 12 discipline documents indexed by the RAG subsystem.",
+  "documents": [
+    {
+      "document_id": "kb-iot-testing-fundamentals",
+      "title": "IoT Testing Fundamentals",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "iot_testing",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_iot_testing_fundamentals.md"
+    },
+    {
+      "document_id": "kb-mqtt-testing",
+      "title": "MQTT Testing",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "mqtt_testing",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_mqtt_testing.md"
+    },
+    {
+      "document_id": "kb-temperature-sensor-testing",
+      "title": "Temperature Sensor Testing",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "temperature_sensor_testing",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_temperature_sensor_testing.md"
+    },
+    {
+      "document_id": "kb-boundary-value-analysis",
+      "title": "Boundary Value Analysis",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "boundary_value_analysis",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_boundary_value_analysis.md"
+    },
+    {
+      "document_id": "kb-equivalence-partitioning",
+      "title": "Equivalence Partitioning",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "equivalence_partitioning",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_equivalence_partitioning.md"
+    },
+    {
+      "document_id": "kb-negative-testing",
+      "title": "Negative Testing",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "negative_testing",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_negative_testing.md"
+    },
+    {
+      "document_id": "kb-data-validation",
+      "title": "Data Validation",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "data_validation",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_data_validation.md"
+    },
+    {
+      "document_id": "kb-timing-sampling",
+      "title": "Timing and Sampling Tests",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "timing_sampling",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_timing_sampling.md"
+    },
+    {
+      "document_id": "kb-communication-reliability",
+      "title": "Communication Reliability",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "communication_reliability",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_communication_reliability.md"
+    },
+    {
+      "document_id": "kb-fault-injection",
+      "title": "Fault Injection",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "fault_injection",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_fault_injection.md"
+    },
+    {
+      "document_id": "kb-device-offline-recovery",
+      "title": "Device Offline and Recovery Testing",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "device_offline_recovery",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_offline_recovery.md"
+    },
+    {
+      "document_id": "kb-sensor-accuracy",
+      "title": "Sensor Accuracy Testing",
+      "source": "IoT Test Engineering Handbook",
+      "topic": "sensor_accuracy",
+      "version": "1.0",
+      "document_type": "knowledge",
+      "path": "kb_sensor_accuracy.md"
+    }
+  ]
+}

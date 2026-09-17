@@ -1,0 +1,749 @@
+@import "tailwindcss";
+
+/*
+  Phase 15 — EXACT VISUAL DESIGN SYSTEM.
+
+  "Professional AI-powered Industrial IoT Test Automation Control Center"
+
+  Dark, technical, modern, data-rich. Color communicates category, status,
+  importance and interaction — never decoration.
+
+  Uses the fixed palette:
+    bg #0B1120 · bg2 #111827 · card #151F32 · elevated #1A263B ·
+    sidebar #080D18 · header #0F172A · cyan #22D3EE · blue #3B82F6 ·
+    purple #8B5CF6 · green #22C55E · amber #F59E0B · red #EF4444 ·
+    ink #F8FAFC · ink2 #CBD5E1 · muted #94A3B8 · line #243244
+
+  Motion system:
+    200ms  standard UI/interaction
+    250ms  card hover
+    350ms  page/section entrance
+    700ms  workflow connecting-line draw
+    800ms  progress bars
+    900ms  charts (donut / gauge)
+    2.4s   backend-online pulse (subtle)
+    1.5s   skeleton shimmer
+    All animations honour prefers-reduced-motion.
+*/
+
+@theme {
+  /* ---- Surfaces (60%) ---------------------------------------------- */
+  --color-bg-main: #0B1120;
+  --color-bg-secondary: #111827;
+  --color-card: #151F32;
+  --color-card-elevated: #1A263B;
+  --color-sidebar: #080D18;
+  --color-header: #0F172A;
+
+  /* ---- Primary accents (10%) ---------------------------------------- */
+  --color-cyan: #22D3EE;
+  --color-blue: #3B82F6;
+  --color-purple: #8B5CF6;
+  --color-green-darker: #16A34A;
+
+  /* ---- Status ------------------------------------------------------- */
+  --color-green: #22C55E;
+  --color-ok-bg: #052E1A;
+  --color-amber: #F59E0B;
+  --color-warn-bg: #3A2505;
+  --color-red: #EF4444;
+  --color-err-bg: #3B1111;
+
+  /* ---- Text --------------------------------------------------------- */
+  --color-ink: #F8FAFC;
+  --color-ink-secondary: #CBD5E1;
+  --color-ink-muted: #94A3B8;
+  --color-ink-disabled: #64748B;
+
+  /* ---- Borders ------------------------------------------------------ */
+  --color-line: #243244;
+  --color-line-active: #3B82F6;
+  --color-line-success: #166534;
+  --color-line-warn: #92400E;
+  --color-line-error: #991B1B;
+
+  /* ---- Radius ------------------------------------------------------- */
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --radius-pill: 9999px;
+
+  /* ---- Shadows ------------------------------------------------------ */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-ai: 0 4px 24px rgba(34, 211, 238, 0.12), 0 8px 30px rgba(0, 0, 0, 0.25);
+
+  /* ---- Typography --------------------------------------------------- */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-bg-main font-sans text-ink antialiased;
+  }
+
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-size: 14px;
+    /* Faint fixed control-center depth glow (barely perceptible). */
+    background-color: #0b1120;
+    background-image:
+      radial-gradient(1100px 620px at 50% -140px, rgba(34, 211, 238, 0.06), transparent 65%),
+      radial-gradient(900px 520px at 88% 112%, rgba(139, 92, 246, 0.05), transparent 60%),
+      radial-gradient(760px 420px at 0% 102%, rgba(34, 197, 94, 0.04), transparent 60%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.25);
+    color: #f8fafc;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(34, 211, 238, 0.6);
+    outline-offset: 2px;
+  }
+
+  code,
+  pre {
+    @apply font-mono;
+  }
+
+  /* Monospaced numbers in KPIs / tables. */
+  .tab-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+}
+
+/* ---------- Scrollbars (WebKit + Firefox) ---------------------------- */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #243244;
+  border-radius: 8px;
+  border: 2px solid #0b1120;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2e4057;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: #243244 #0b1120;
+    scrollbar-width: thin;
+  }
+}
+
+/* ---------- Standard transition (200ms) ------------------------------ */
+.t-ease {
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Cards ---------------------------------------------------- */
+/* Dashboard / KPI / IoT cards: inset top hairline + resting drop shadow
+   that lifts on hover. Components apply `card-hover`; panel shells use
+   `panel-card`. */
+.card-hover {
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(148, 163, 184, 0.07);
+  transition:
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(148, 163, 184, 0.1);
+  border-color: #2e4057;
+}
+
+/* Reusable dashboard panel. */
+.panel-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--color-line);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-card);
+}
+
+.panel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.35), transparent);
+  pointer-events: none;
+}
+
+/* KPI card template: hairline accent + faint corner sheen. */
+.kpi-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-line);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  border-radius: 0 0 var(--radius-pill) var(--radius-pill);
+  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  right: -36px;
+  top: -36px;
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: #2e4057;
+}
+
+/* ---------- Buttons -------------------------------------------------- */
+.btn-ui {
+  transition:
+    transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    filter 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ui:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.btn-ui:active {
+  transform: scale(0.98);
+}
+
+.btn-ui:disabled {
+  cursor: not-allowed;
+  filter: saturate(0.6);
+}
+
+.btn-primary {
+  background-image: linear-gradient(135deg, #22d3ee, #3b82f6);
+  color: #0b1120;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(34, 211, 238, 0.18);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+/* ---------- Status badges / chips ------------------------------------ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line);
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.badge::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: currentColor;
+}
+
+.badge-ok {
+  border-color: var(--color-line-success);
+  background: var(--color-ok-bg);
+  color: var(--color-green);
+}
+
+.badge-warn {
+  border-color: var(--color-line-warn);
+  background: var(--color-warn-bg);
+  color: var(--color-amber);
+}
+
+.badge-bad {
+  border-color: var(--color-line-error);
+  background: var(--color-err-bg);
+  color: var(--color-red);
+}
+
+.badge-skip {
+  border-color: var(--color-line);
+  background: var(--color-bg-secondary);
+  color: var(--color-ink-muted);
+}
+
+.badge-na {
+  border-color: var(--color-line);
+  background: var(--color-bg-secondary);
+  color: var(--color-ink-disabled);
+}
+
+/* ---------- Alert panels --------------------------------------------- */
+.alert-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-line);
+  padding: 14px 16px;
+  font-size: 13px;
+}
+
+.alert-ok {
+  border-color: var(--color-line-success);
+  background: var(--color-ok-bg);
+}
+
+.alert-warn {
+  border-color: var(--color-line-warn);
+  background: var(--color-warn-bg);
+}
+
+.alert-bad {
+  border-color: var(--color-line-error);
+  background: var(--color-err-bg);
+}
+
+.alert-na {
+  border-color: var(--color-line);
+  background: var(--color-bg-secondary);
+}
+
+/* ---------- Page / section entrance (350ms) -------------------------- */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-entry {
+  animation: fadeSlideIn 350ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Chart/diagram entrance (slightly longer, softer). */
+@keyframes chartIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.chart-in {
+  animation: chartIn 420ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ---------- Loading skeleton shimmer --------------------------------- */
+@keyframes shimmer {
+  from {
+    background-position: -400px 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  background-image: linear-gradient(90deg, #151f32 25%, #1a263b 40%, #151f32 60%);
+  background-size: 400px 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+/* ---------- Status pulse (subtle, never flashing) --------------------- */
+@keyframes pulseOk {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0);
+  }
+}
+
+@keyframes pulseBad {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(239, 68, 68, 0);
+  }
+}
+
+.pulse-ok {
+  animation: pulseOk 2.4s ease-in-out infinite;
+}
+
+.pulse-bad {
+  animation: pulseBad 2.8s ease-in-out infinite;
+}
+
+/* Extremely subtle ambient glow for an active/online element. */
+@keyframes flowGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(34, 211, 238, 0.16);
+  }
+}
+
+.flow-glow {
+  animation: flowGlow 3s ease-in-out infinite;
+}
+
+/* ---------- Workflow connecting lines --------------------------------- */
+@keyframes growDown {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes growRight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.workflow-line {
+  transform-origin: top;
+  animation: growDown 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.workflow-line-h {
+  transform-origin: left;
+  animation: growRight 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Subtle once-per-cycle sheen traveling along completed pipeline links. */
+@keyframes flowSweep {
+  0% {
+    background-position: 100% 0;
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.35;
+  }
+  75% {
+    opacity: 0.35;
+  }
+  100% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+}
+
+.workflow-line::after,
+.workflow-line-h::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  background-size: 320% 100%;
+  animation: flowSweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ---------- Charts (900ms, ease-out) --------------------------------- */
+.donut-track,
+.gauge-track {
+  transition: stroke-dashoffset 900ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar-grow {
+  transform-origin: bottom;
+  transform: scaleY(0);
+  animation: barUp 850ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes barUp {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ---------- Progress bars -------------------------------------------- */
+/* Moving highlight on a gradient progress fill (optional, subtle). */
+.bar-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transform: translateX(-100%);
+  animation: shine 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0%,
+  62% {
+    transform: translateX(-100%);
+  }
+  92%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ---------- Timeline rail -------------------------------------------- */
+@keyframes railDown {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.timeline-rail {
+  transform-origin: top;
+  animation: railDown 900ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ---------- Sidebar / header / nav ----------------------------------- */
+.app-sidebar {
+  border-right: 1px solid var(--color-line);
+  background-color: var(--color-sidebar);
+}
+
+.app-header {
+  border-bottom: 1px solid var(--color-line);
+  background-color: color-mix(in srgb, var(--color-header) 94%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+/* Reusable app-navigation item (sidebar + mobile). */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  transition:
+    color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item:hover {
+  color: var(--color-ink);
+  background-color: color-mix(in srgb, var(--color-card-elevated) 60%, transparent);
+  transform: translateX(2px);
+}
+
+.nav-item-active {
+  color: var(--color-ink);
+  background-image: linear-gradient(90deg, rgba(34, 211, 238, 0.11), rgba(59, 130, 246, 0.1), transparent);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.08);
+}
+
+.nav-active-line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 20px;
+  width: 3px;
+  transform: translateY(-50%);
+  border-radius: 0 9999px 9999px 0;
+  background-image: linear-gradient(180deg, #22d3ee, #3b82f6);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+}
+
+/* ---------- Layout helpers (responsive) ------------------------------ */
+.grid-panel {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.grid-kpi {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.hairline-top {
+  position: relative;
+}
+
+.hairline-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.35), transparent);
+  pointer-events: none;
+}
+
+/* ---------- Gradients ------------------------------------------------ */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.grad-primary {
+  background-image: linear-gradient(135deg, #22d3ee, #3b82f6);
+}
+
+.grad-ai {
+  background-image: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.grad-success {
+  background-image: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.grad-fault {
+  background-image: linear-gradient(135deg, #f59e0b, #ef4444);
+}
+
+.text-grad-primary {
+  background-image: linear-gradient(90deg, #22d3ee, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-grad-ai {
+  background-image: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-grad-success {
+  background-image: linear-gradient(90deg, #22c55e, #16a34a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-grad-fault {
+  background-image: linear-gradient(90deg, #f59e0b, #ef4444);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Accessible motion ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .anim-entry,
+  .chart-in,
+  .workflow-line,
+  .workflow-line-h,
+  .workflow-line::after,
+  .workflow-line-h::after,
+  .timeline-rail,
+  .bar-grow,
+  .bar-shine::after,
+  .flow-glow,
+  .skeleton {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

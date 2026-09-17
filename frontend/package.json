@@ -1,0 +1,23 @@
+{
+  "name": "autonomous-rag-iot-frontend",
+  "version": "15.0.0",
+  "private": true,
+  "description": "Phase 15 — React presentation frontend for the Autonomous RAG-Based IoT Test Generation & Fault Detection Framework.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^1.39.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.3.3",
+    "vite": "^5.4.11"
+  }
+}

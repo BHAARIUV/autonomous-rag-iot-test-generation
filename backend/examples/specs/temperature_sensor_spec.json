@@ -1,0 +1,21 @@
+{
+  "device": {
+    "name": "Temperature Sensor",
+    "model": "DS-1007E",
+    "revision": "2.1"
+  },
+  "specification": {
+    "temperature_range": { "min": -40, "max": 125, "unit": "C" },
+    "temperature_accuracy": { "value": 0.5, "tolerance": "+/-", "unit": "C" },
+    "temperature_resolution": { "value": 0.0625, "unit": "C" },
+    "sampling_interval": { "value": 1, "unit": "s" },
+    "update_rate": { "value": 1, "unit": "Hz" },
+    "communication_protocol": "MQTT",
+    "data_format": "JSON",
+    "power_supply": { "value": 3.3, "unit": "V" },
+    "battery_lifetime": { "value": 24, "unit": "months" },
+    "ip_rating": "IP67",
+    "operating_temperature_range": { "min": -40, "max": 85, "unit": "C" },
+    "overheat_protection": { "value": 135, "unit": "C" }
+  }
+}

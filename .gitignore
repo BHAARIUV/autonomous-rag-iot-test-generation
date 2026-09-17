@@ -1,0 +1,39 @@
+# Environments
+.env
+backend/.env
+frontend/.env
+venv/
+env/
+
+#Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Generated / local data
+knowledge_base/chroma/
+frontend/.dom-dump.html
+
+# Data / logs / generated artifacts (relative to backend/)
+backend/data/*.db
+backend/logs/*.log
+backend/reports/*.pdf
+backend/reports/*.html
+backend/knowledge_base/chroma/
+
+#Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

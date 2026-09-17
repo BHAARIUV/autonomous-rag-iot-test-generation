@@ -1,0 +1,23 @@
+# ============================================================
+# Temperature Sensor — Device Specification
+# Realistic example for the Phase 5 requirement-ingestion demo.
+# Source: vendor datasheet DS-1007E, revision 2.1 (excerpt)
+# ============================================================
+
+Device: Temperature Sensor
+
+Temperature Range: -40°C to 125°C
+Temperature Accuracy: ±0.5°C
+Temperature Resolution: 0.0625 °C
+Sampling Interval: 1 s
+Update Rate: 1 Hz
+
+Communication Protocol: MQTT
+Data Format: JSON
+
+Power Supply: 3.3 V
+Battery Lifetime: 24 months
+IP Rating: IP67
+
+Operating Temperature: -40°C to 85°C
+Overheat Protection: 135 °C

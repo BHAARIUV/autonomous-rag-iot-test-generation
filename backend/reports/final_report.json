@@ -1,0 +1,746 @@
+{
+  "analysis_id": "cf4e0fa7695046e1972526466eaaaf4f",
+  "project_id": "autonomous-rag-iot-test-generation",
+  "project_name": "Autonomous RAG-Based IoT Test Generation & Fault Detection Framework",
+  "generated_timestamp": "2026-08-29T10:34:14.235543Z",
+  "status": "COMPLETE",
+  "phases": [
+    {
+      "phase_number": 1,
+      "title": "Project Setup & Skeleton",
+      "status": "COMPLETE",
+      "major_feature": "Core skeleton, config, logging",
+      "verification": "python run.py + unit tests"
+    },
+    {
+      "phase_number": 2,
+      "title": "IoT Temperature Sensor Simulator",
+      "status": "COMPLETE",
+      "major_feature": "Deterministic simulator, SensorConfig/Reading",
+      "verification": "tests/unit/test_simulator.py"
+    },
+    {
+      "phase_number": 3,
+      "title": "MQTT Communication Layer",
+      "status": "COMPLETE",
+      "major_feature": "MQTT connection, publisher, subscriber, wire messages",
+      "verification": "tests/unit/test_mqtt_*.py"
+    },
+    {
+      "phase_number": 4,
+      "title": "Fault Injection Engine",
+      "status": "COMPLETE",
+      "major_feature": "FaultInjector, registry, adapters, FaultSpec model",
+      "verification": "tests/unit/test_fault_*.py"
+    },
+    {
+      "phase_number": 5,
+      "title": "Requirement Extraction",
+      "status": "COMPLETE",
+      "major_feature": "Ingestion: text/JSON/PDF parsers, Requirement model",
+      "verification": "tests/unit/test_spec_*.py"
+    },
+    {
+      "phase_number": 6,
+      "title": "RAG Knowledge Base & Retrieval",
+      "status": "COMPLETE",
+      "major_feature": "Loader, chunker, embeddings, vector store, retriever",
+      "verification": "tests/unit/test_rag_*.py"
+    },
+    {
+      "phase_number": 7,
+      "title": "LLM Test Generation + Validation",
+      "status": "COMPLETE",
+      "major_feature": "Mock/OpenAI providers, parser, validate_candidates",
+      "verification": "tests/unit/test_llm_*.py"
+    },
+    {
+      "phase_number": 8,
+      "title": "Automated Test Execution",
+      "status": "COMPLETE",
+      "major_feature": "Closed action set, interpreter, executor, ExecutionResult",
+      "verification": "tests/unit/test_execution_*.py"
+    },
+    {
+      "phase_number": 9,
+      "title": "Coverage & Fault Analysis",
+      "status": "COMPLETE",
+      "major_feature": "Requirement/category/interface coverage, gaps",
+      "verification": "tests/unit/test_analysis_*.py"
+    },
+    {
+      "phase_number": 10,
+      "title": "Final Reporting & Traceability",
+      "status": "COMPLETE",
+      "major_feature": "End-to-end traceability, JSON/Markdown final reports",
+      "verification": "tests/unit/test_reporting_*.py"
+    }
+  ],
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "category": "RANGE",
+      "description": "The device shall measure temperatures within the range -40 °C to 125 °C.",
+      "source": "temperature_sensor.txt",
+      "source_reference": "line 2",
+      "spec_evidence": [
+        {
+          "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+          "document_id": "kb-temperature-sensor-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "temperature_sensor_testing",
+          "relevance": 0.6399694681167603
+        },
+        {
+          "chunk_id": "kb-boundary-value-analysis--chunk-001",
+          "document_id": "kb-boundary-value-analysis",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "boundary_value_analysis",
+          "relevance": 0.6044460535049438
+        },
+        {
+          "chunk_id": "kb-negative-testing--chunk-000",
+          "document_id": "kb-negative-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "negative_testing",
+          "relevance": 0.5369865894317627
+        },
+        {
+          "chunk_id": "kb-equivalence-partitioning--chunk-000",
+          "document_id": "kb-equivalence-partitioning",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "equivalence_partitioning",
+          "relevance": 0.5294917821884155
+        },
+        {
+          "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+          "document_id": "kb-temperature-sensor-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "temperature_sensor_testing",
+          "relevance": 0.6399694681167603
+        },
+        {
+          "chunk_id": "kb-boundary-value-analysis--chunk-001",
+          "document_id": "kb-boundary-value-analysis",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "boundary_value_analysis",
+          "relevance": 0.6044460535049438
+        },
+        {
+          "chunk_id": "kb-negative-testing--chunk-000",
+          "document_id": "kb-negative-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "negative_testing",
+          "relevance": 0.5369865894317627
+        },
+        {
+          "chunk_id": "kb-equivalence-partitioning--chunk-000",
+          "document_id": "kb-equivalence-partitioning",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "equivalence_partitioning",
+          "relevance": 0.5294917821884155
+        },
+        {
+          "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+          "document_id": "kb-temperature-sensor-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "temperature_sensor_testing",
+          "relevance": 0.6399694681167603
+        },
+        {
+          "chunk_id": "kb-boundary-value-analysis--chunk-001",
+          "document_id": "kb-boundary-value-analysis",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "boundary_value_analysis",
+          "relevance": 0.6044460535049438
+        },
+        {
+          "chunk_id": "kb-negative-testing--chunk-000",
+          "document_id": "kb-negative-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "negative_testing",
+          "relevance": 0.5369865894317627
+        },
+        {
+          "chunk_id": "kb-equivalence-partitioning--chunk-000",
+          "document_id": "kb-equivalence-partitioning",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "equivalence_partitioning",
+          "relevance": 0.5294917821884155
+        },
+        {
+          "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+          "document_id": "kb-temperature-sensor-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "temperature_sensor_testing",
+          "relevance": 0.6399694681167603
+        },
+        {
+          "chunk_id": "kb-boundary-value-analysis--chunk-001",
+          "document_id": "kb-boundary-value-analysis",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "boundary_value_analysis",
+          "relevance": 0.6044460535049438
+        },
+        {
+          "chunk_id": "kb-negative-testing--chunk-000",
+          "document_id": "kb-negative-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "negative_testing",
+          "relevance": 0.5369865894317627
+        },
+        {
+          "chunk_id": "kb-equivalence-partitioning--chunk-000",
+          "document_id": "kb-equivalence-partitioning",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "equivalence_partitioning",
+          "relevance": 0.5294917821884155
+        },
+        {
+          "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+          "document_id": "kb-temperature-sensor-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "temperature_sensor_testing",
+          "relevance": 0.6399694681167603
+        },
+        {
+          "chunk_id": "kb-boundary-value-analysis--chunk-001",
+          "document_id": "kb-boundary-value-analysis",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "boundary_value_analysis",
+          "relevance": 0.6044460535049438
+        },
+        {
+          "chunk_id": "kb-negative-testing--chunk-000",
+          "document_id": "kb-negative-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "negative_testing",
+          "relevance": 0.5369865894317627
+        },
+        {
+          "chunk_id": "kb-equivalence-partitioning--chunk-000",
+          "document_id": "kb-equivalence-partitioning",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "equivalence_partitioning",
+          "relevance": 0.5294917821884155
+        },
+        {
+          "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+          "document_id": "kb-temperature-sensor-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "temperature_sensor_testing",
+          "relevance": 0.6399694681167603
+        },
+        {
+          "chunk_id": "kb-boundary-value-analysis--chunk-001",
+          "document_id": "kb-boundary-value-analysis",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "boundary_value_analysis",
+          "relevance": 0.6044460535049438
+        },
+        {
+          "chunk_id": "kb-negative-testing--chunk-000",
+          "document_id": "kb-negative-testing",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "negative_testing",
+          "relevance": 0.5369865894317627
+        },
+        {
+          "chunk_id": "kb-equivalence-partitioning--chunk-000",
+          "document_id": "kb-equivalence-partitioning",
+          "source": "IoT Test Engineering Handbook",
+          "topic": "equivalence_partitioning",
+          "relevance": 0.5294917821884155
+        }
+      ],
+      "tests": [
+        {
+          "test_case_id": "TC-001",
+          "requirement_id": "REQ-001",
+          "category": "POSITIVE",
+          "priority": "MEDIUM",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [
+            {
+              "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+              "document_id": "kb-temperature-sensor-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "temperature_sensor_testing",
+              "relevance": 0.6399694681167603
+            },
+            {
+              "chunk_id": "kb-boundary-value-analysis--chunk-001",
+              "document_id": "kb-boundary-value-analysis",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "boundary_value_analysis",
+              "relevance": 0.6044460535049438
+            },
+            {
+              "chunk_id": "kb-negative-testing--chunk-000",
+              "document_id": "kb-negative-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "negative_testing",
+              "relevance": 0.5369865894317627
+            },
+            {
+              "chunk_id": "kb-equivalence-partitioning--chunk-000",
+              "document_id": "kb-equivalence-partitioning",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "equivalence_partitioning",
+              "relevance": 0.5294917821884155
+            }
+          ],
+          "executions": [
+            {
+              "execution_id": "76930c74f6e54e3f9755fc0525269c74",
+              "execution_status": "PASS",
+              "fault_types_injected": []
+            }
+          ],
+          "has_executed": true,
+          "final_status": "PASS"
+        },
+        {
+          "test_case_id": "TC-002",
+          "requirement_id": "REQ-001",
+          "category": "BOUNDARY",
+          "priority": "HIGH",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [
+            {
+              "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+              "document_id": "kb-temperature-sensor-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "temperature_sensor_testing",
+              "relevance": 0.6399694681167603
+            },
+            {
+              "chunk_id": "kb-boundary-value-analysis--chunk-001",
+              "document_id": "kb-boundary-value-analysis",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "boundary_value_analysis",
+              "relevance": 0.6044460535049438
+            },
+            {
+              "chunk_id": "kb-negative-testing--chunk-000",
+              "document_id": "kb-negative-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "negative_testing",
+              "relevance": 0.5369865894317627
+            },
+            {
+              "chunk_id": "kb-equivalence-partitioning--chunk-000",
+              "document_id": "kb-equivalence-partitioning",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "equivalence_partitioning",
+              "relevance": 0.5294917821884155
+            }
+          ],
+          "executions": [
+            {
+              "execution_id": "f6be3dd6b4e7478dbe5bf1d2b47a4a2a",
+              "execution_status": "PASS",
+              "fault_types_injected": []
+            }
+          ],
+          "has_executed": true,
+          "final_status": "PASS"
+        },
+        {
+          "test_case_id": "TC-003",
+          "requirement_id": "REQ-001",
+          "category": "BOUNDARY",
+          "priority": "HIGH",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [
+            {
+              "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+              "document_id": "kb-temperature-sensor-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "temperature_sensor_testing",
+              "relevance": 0.6399694681167603
+            },
+            {
+              "chunk_id": "kb-boundary-value-analysis--chunk-001",
+              "document_id": "kb-boundary-value-analysis",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "boundary_value_analysis",
+              "relevance": 0.6044460535049438
+            },
+            {
+              "chunk_id": "kb-negative-testing--chunk-000",
+              "document_id": "kb-negative-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "negative_testing",
+              "relevance": 0.5369865894317627
+            },
+            {
+              "chunk_id": "kb-equivalence-partitioning--chunk-000",
+              "document_id": "kb-equivalence-partitioning",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "equivalence_partitioning",
+              "relevance": 0.5294917821884155
+            }
+          ],
+          "executions": [
+            {
+              "execution_id": "c83ac77426a74c5495f34e42156b790e",
+              "execution_status": "PASS",
+              "fault_types_injected": []
+            }
+          ],
+          "has_executed": true,
+          "final_status": "PASS"
+        },
+        {
+          "test_case_id": "TC-004",
+          "requirement_id": "REQ-001",
+          "category": "NEGATIVE",
+          "priority": "HIGH",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [
+            {
+              "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+              "document_id": "kb-temperature-sensor-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "temperature_sensor_testing",
+              "relevance": 0.6399694681167603
+            },
+            {
+              "chunk_id": "kb-boundary-value-analysis--chunk-001",
+              "document_id": "kb-boundary-value-analysis",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "boundary_value_analysis",
+              "relevance": 0.6044460535049438
+            },
+            {
+              "chunk_id": "kb-negative-testing--chunk-000",
+              "document_id": "kb-negative-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "negative_testing",
+              "relevance": 0.5369865894317627
+            },
+            {
+              "chunk_id": "kb-equivalence-partitioning--chunk-000",
+              "document_id": "kb-equivalence-partitioning",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "equivalence_partitioning",
+              "relevance": 0.5294917821884155
+            }
+          ],
+          "executions": [
+            {
+              "execution_id": "4efea946409c4f68a6c50d7703c29ba5",
+              "execution_status": "PASS",
+              "fault_types_injected": []
+            }
+          ],
+          "has_executed": true,
+          "final_status": "PASS"
+        },
+        {
+          "test_case_id": "TC-005",
+          "requirement_id": "REQ-001",
+          "category": "NEGATIVE",
+          "priority": "HIGH",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [
+            {
+              "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+              "document_id": "kb-temperature-sensor-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "temperature_sensor_testing",
+              "relevance": 0.6399694681167603
+            },
+            {
+              "chunk_id": "kb-boundary-value-analysis--chunk-001",
+              "document_id": "kb-boundary-value-analysis",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "boundary_value_analysis",
+              "relevance": 0.6044460535049438
+            },
+            {
+              "chunk_id": "kb-negative-testing--chunk-000",
+              "document_id": "kb-negative-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "negative_testing",
+              "relevance": 0.5369865894317627
+            },
+            {
+              "chunk_id": "kb-equivalence-partitioning--chunk-000",
+              "document_id": "kb-equivalence-partitioning",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "equivalence_partitioning",
+              "relevance": 0.5294917821884155
+            }
+          ],
+          "executions": [
+            {
+              "execution_id": "5dce277f085c4a40b26ad7bf80d6ca84",
+              "execution_status": "PASS",
+              "fault_types_injected": []
+            }
+          ],
+          "has_executed": true,
+          "final_status": "PASS"
+        },
+        {
+          "test_case_id": "TC-006",
+          "requirement_id": "REQ-001",
+          "category": "EQUIVALENCE",
+          "priority": "MEDIUM",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [
+            {
+              "chunk_id": "kb-temperature-sensor-testing--chunk-000",
+              "document_id": "kb-temperature-sensor-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "temperature_sensor_testing",
+              "relevance": 0.6399694681167603
+            },
+            {
+              "chunk_id": "kb-boundary-value-analysis--chunk-001",
+              "document_id": "kb-boundary-value-analysis",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "boundary_value_analysis",
+              "relevance": 0.6044460535049438
+            },
+            {
+              "chunk_id": "kb-negative-testing--chunk-000",
+              "document_id": "kb-negative-testing",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "negative_testing",
+              "relevance": 0.5369865894317627
+            },
+            {
+              "chunk_id": "kb-equivalence-partitioning--chunk-000",
+              "document_id": "kb-equivalence-partitioning",
+              "source": "IoT Test Engineering Handbook",
+              "topic": "equivalence_partitioning",
+              "relevance": 0.5294917821884155
+            }
+          ],
+          "executions": [
+            {
+              "execution_id": "d4b7be0090ec47418f5265772e209d1b",
+              "execution_status": "PASS",
+              "fault_types_injected": []
+            }
+          ],
+          "has_executed": true,
+          "final_status": "PASS"
+        },
+        {
+          "test_case_id": "TC-UNEXEC-001",
+          "requirement_id": "REQ-001",
+          "category": "BOUNDARY",
+          "priority": "HIGH",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [],
+          "executions": [],
+          "has_executed": false,
+          "final_status": null
+        },
+        {
+          "test_case_id": "TC-FAULT-001",
+          "requirement_id": "REQ-001",
+          "category": "NEGATIVE",
+          "priority": "HIGH",
+          "protocol": "SENSOR",
+          "interface": null,
+          "validation_status": "VALIDATED",
+          "rag_evidence": [],
+          "executions": [
+            {
+              "execution_id": "43f6a47e699643398d5f8266c4cd9861",
+              "execution_status": "FAIL",
+              "fault_types_injected": [
+                "SENSOR_OUT_OF_RANGE"
+              ]
+            }
+          ],
+          "has_executed": true,
+          "final_status": "FAIL"
+        }
+      ],
+      "associated_fault_types": [
+        "SENSOR_OUT_OF_RANGE"
+      ],
+      "covered": true,
+      "has_failing_test": true,
+      "missing_execution_evidence": true
+    },
+    {
+      "requirement_id": "REQ-002",
+      "category": "ACCURACY",
+      "description": "The device shall report temperature values accurate to within ±0.5 °C.",
+      "source": "temperature_sensor.txt",
+      "source_reference": "line 3",
+      "spec_evidence": [],
+      "tests": [],
+      "associated_fault_types": [],
+      "covered": false,
+      "has_failing_test": false,
+      "missing_execution_evidence": false
+    },
+    {
+      "requirement_id": "REQ-003",
+      "category": "TIMING",
+      "description": "The device shall produce a new measurement every 1 s.",
+      "source": "temperature_sensor.txt",
+      "source_reference": "line 4",
+      "spec_evidence": [],
+      "tests": [],
+      "associated_fault_types": [],
+      "covered": false,
+      "has_failing_test": false,
+      "missing_execution_evidence": false
+    },
+    {
+      "requirement_id": "REQ-004",
+      "category": "COMMUNICATION",
+      "description": "The device shall communicate using the MQTT protocol.",
+      "source": "temperature_sensor.txt",
+      "source_reference": "line 5",
+      "spec_evidence": [],
+      "tests": [
+        {
+          "test_case_id": "TC-MQTT-001",
+          "requirement_id": "REQ-004",
+          "category": "COMMUNICATION",
+          "priority": "HIGH",
+          "protocol": "MQTT",
+          "interface": "iot/sensor/temperature",
+          "validation_status": "VALIDATED",
+          "rag_evidence": [],
+          "executions": [
+            {
+              "execution_id": "522adcf5e49645f8a7dab7712d6f4de1",
+              "execution_status": "PASS",
+              "fault_types_injected": []
+            }
+          ],
+          "has_executed": true,
+          "final_status": "PASS"
+        }
+      ],
+      "associated_fault_types": [],
+      "covered": true,
+      "has_failing_test": false,
+      "missing_execution_evidence": false
+    }
+  ],
+  "faults": [
+    {
+      "fault_id": "F-MQTT-DISCONNECT",
+      "fault_type": "MQTT_DISCONNECT",
+      "requirement_ids": [],
+      "related_test_case_ids": [],
+      "injection_status": "NOT_EXECUTED",
+      "injection_evidence": [],
+      "detection_status": "NOT_EXECUTED",
+      "execution_result": null,
+      "detection_evidence": "No test injected fault MQTT_DISCONNECT; detection cannot be inferred without execution evidence."
+    },
+    {
+      "fault_id": "F-SENSOR-OOR",
+      "fault_type": "SENSOR_OUT_OF_RANGE",
+      "requirement_ids": [
+        "REQ-001"
+      ],
+      "related_test_case_ids": [
+        "TC-FAULT-001"
+      ],
+      "injection_status": "INJECTED",
+      "injection_evidence": [
+        "TC-FAULT-001"
+      ],
+      "detection_status": "DETECTED",
+      "execution_result": "FAIL",
+      "detection_evidence": "Fault SENSOR_OUT_OF_RANGE injected and its assertion FAIL surfaced it in ['TC-FAULT-001']."
+    }
+  ],
+  "gaps": [
+    {
+      "gap_id": "GAP-001",
+      "type": "TEST_GENERATED_NOT_EXECUTED",
+      "requirement_id": "REQ-001",
+      "related_test_case_id": "TC-UNEXEC-001",
+      "description": "Test TC-UNEXEC-001 (BOUNDARY) was generated for requirement REQ-001 but never executed.",
+      "severity": "HIGH",
+      "recommended_action": "Execute the test to confirm the behavior it targets."
+    },
+    {
+      "gap_id": "GAP-002",
+      "type": "FAULT_NO_TEST",
+      "requirement_id": null,
+      "related_test_case_id": null,
+      "description": "Fault MQTT_DISCONNECT is a known fault but no test injected it.",
+      "severity": "HIGH",
+      "recommended_action": "Add and execute a test that injects fault MQTT_DISCONNECT."
+    }
+  ],
+  "coverage": {
+    "total_requirements": 4,
+    "covered_requirements": 2,
+    "requirement_coverage": 50.0,
+    "total_test_cases": 9,
+    "executed_test_cases": 8,
+    "execution_coverage": 88.89,
+    "pass_rate": 77.78,
+    "total_faults": 2,
+    "detected_faults": 1,
+    "fault_detection_rate": 100.0,
+    "gap_count": 2
+  },
+  "test_summary": {
+    "total": 668,
+    "passed": 668,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 38.23
+  },
+  "summary": {
+    "project_id": "autonomous-rag-iot-test-generation",
+    "status": "COMPLETE",
+    "generated_timestamp": "2026-08-29T10:34:14.235543Z",
+    "requirement_count": 4,
+    "test_case_count": 9,
+    "executed_test_count": 8,
+    "passed_count": 7,
+    "failed_count": 1,
+    "error_count": 0,
+    "skipped_count": 0,
+    "execution_coverage": 88.89,
+    "requirement_coverage": 50.0,
+    "fault_count": 2,
+    "detected_fault_count": 1,
+    "fault_detection_rate": 100.0,
+    "gap_count": 2,
+    "recommendations": [
+      "Add and execute a test that injects fault MQTT_DISCONNECT.",
+      "Execute the test to confirm the behavior it targets."
+    ],
+    "known_limitations": [
+      "Offline suite uses the deterministic mock LLM provider; real OpenAI generation is wired but not exercised to avoid API spend.",
+      "Fault detection is keyed by fault type from execution evidence, not by a persisted cross-reference to a single injected fault instance.",
+      "MQTT tests are honest about broker availability: with no reachable broker they are SKIPPED (never faked), which lowers interface coverage in broker-less runs."
+    ]
+  },
+  "_schema": "autonomous-rag-iot-final-report/v1"
+}
