@@ -718,6 +718,37 @@ the local embedding provider (no paid API key required); the REAL LLM/MQTT paths
 are exercised only in MOCK/offline mode here and would need credentials and a
 reachable broker to be verified for real.
 
+## Phase 14 — Final Testing, Debugging & Documentation
+
+Phase 14 focused on final verification, debugging, integration testing, and project documentation before completing the framework.
+
+### Final Backend Verification
+
+The complete backend test suite was executed to verify the functionality developed across Phases 1-14.
+
+```text
+668 tests passed
+
+
+### Then immediately add Phase 15
+
+```markdown
+## Phase 15 — React Frontend
+
+Phase 15 is the final presentation layer of the project. A professional React + Vite + Tailwind CSS frontend was developed to visualize the complete Autonomous RAG-Based IoT Test Generation & Fault Detection Framework.
+
+### Frontend Architecture
+
+```text
+React + Vite + Tailwind CSS
+            │
+            │ REST API
+            ▼
+Python Backend
+            │
+            ├── /api/health
+            └── /api/dashboard
+
 ## Development phases
 
 This project is built incrementally. Current status:
