@@ -728,14 +728,84 @@ The complete backend test suite was executed to verify the functionality develop
 
 ```text
 668 tests passed
+```
 
+- **Requirement ingestion and validation** — the ingestion service parses real
+  IoT specs and validates the extracted requirements.
+- **RAG knowledge retrieval** — the RAG pipeline indexes the corpus and
+  retrieves relevant knowledge chunks for each requirement.
+- **LLM test generation and validation** — the mock/real LLM provider generates
+  structured test cases that pass full validation before execution.
+- **IoT temperature sensor simulation** — the simulated Temperature Sensor
+  produces realistic readings over MQTT.
+- **MQTT communication** — publish/subscribe messaging against Mosquitto is
+  verified end to end.
+- **Fault injection** — the fault injection engine applies the full fault set
+  with evidence-backed detection.
+- **Automated test execution** — the safe closed-action-set executor runs the
+  generated tests and records typed PASS / FAIL / ERROR / SKIPPED results.
+- **Coverage and fault analysis** — requirement/interface coverage and
+  evidence-backed fault detection are computed and reported.
+- **Autonomous refinement** — the Phase 11 loop closes addressable gaps and
+  records measured before/after coverage.
+- **Reporting** — the Phase 10 final project report is generated with real
+  pytest totals and end-to-end traceability.
+- **Dashboard API** — the read-only dashboard server serves the typed
+  `DashboardData` view model and health info over HTTP.
+- **End-to-end integration** — the Phase 13 chain drives all services in one
+  deterministic, typed orchestration.
 
-### Then immediately add Phase 15
+Also verified during the final backend pass:
+- 668 backend tests passed (0 failed, 0 skipped).
+- Deterministic MOCK execution was verified (repeated runs produce the same
+  totals and coverage).
+- Requirement traceability was verified end to end (requirement → RAG →
+  generated/validated → executed → fault IDs).
+- Fault detection evidence was verified (a fault is DETECTED only when a test
+  that injected it ended FAIL).
+- MQTT availability handling was verified (unreachable broker ⇒ MQTT tests
+  SKIPPED, never a fake pass).
+- API health and dashboard data were verified (HTTP 200, no secrets, all
+  sections A–I present).
+- Error and SKIPPED state propagation was verified (execution `ERROR`/`SKIPPED`
+  propagate verbatim, never promoted to PASS).
+- Project structure and documentation were reviewed.
 
-```markdown
+### Documentation
+
+The following documentation was completed for the project:
+- **Project architecture** — backend/frontend layout, module responsibilities,
+  and the REST connection between them.
+- **Development phases** — the full Phase 1–15 roadmap with per-phase purpose,
+  commands, and checklists.
+- **End-to-end workflow** — the Phase 13 orchestration from specification to
+  final report and dashboard.
+- **API information** — `/api/health` and `/api/dashboard` endpoints, CORS
+  allow-listing, and `VITE_API_BASE_URL` configuration.
+- **Testing information** — how to run the full suite and per-phase subsets,
+  and what each phase's tests cover.
+- **Known limitations** — stub modules, the untested real-LLM path, and
+  Phase 10 report scoping.
+- **Setup and execution instructions** — prerequisites, Mosquitto setup, venv,
+  environment configuration, and run commands.
+- **Final reports and traceability information** — where reports live and how
+  every number is derived from real artifacts.
+
+### Phase 14 Status
+
+**COMPLETE**
+
+The backend framework was fully tested and documented before the final React
+frontend phase.
+
 ## Phase 15 — React Frontend
 
-Phase 15 is the final presentation layer of the project. A professional React + Vite + Tailwind CSS frontend was developed to visualize the complete Autonomous RAG-Based IoT Test Generation & Fault Detection Framework.
+Phase 15 is the **final presentation layer** of the project. A professional
+**React + Vite + Tailwind CSS** frontend was developed to visualize the
+complete Autonomous RAG-Based IoT Test Generation & Fault Detection Framework.
+It is a read-only rich client that connects to the existing **Python backend**
+over **REST** and renders the project's **real project / dashboard data** — it
+never fabricates values and never exposes secrets.
 
 ### Frontend Architecture
 
@@ -748,10 +818,118 @@ Python Backend
             │
             ├── /api/health
             └── /api/dashboard
+```
+
+### Main Dashboard Views
+
+The frontend renders the project's real dashboard data across ten views:
+
+- **Dashboard** — project overview with real pytest totals and status.
+- **Workflow** — the end-to-end pipeline (ingestion → RAG → generation →
+  execution → analysis → refinement → reporting → dashboard).
+- **Phases** — Phase 1–15 status (all complete).
+- **Requirements** — extracted requirements with validation and coverage status.
+- **Knowledge / RAG** — corpus documents and requirement → knowledge retrieval.
+- **Test Generation** — generated/validated test cases with generation mode.
+- **Execution** — executed tests with PASS / FAIL / ERROR / SKIPPED totals.
+- **Fault Analysis** — evidence-backed fault detection with detection rate.
+- **Refinement** — autonomous refinement iterations and measured improvement.
+- **Traceability** — requirement → test → execution → fault ID chains.
+- **Reports** — final report and dashboard data access.
+
+### Key Features
+
+- **Professional AI + IoT Test Automation Control Center** — a complete,
+  polished command center for the autonomous RAG-IoT testing framework.
+- **React + Vite frontend** — fast modern SPA built with Vite.
+- **Tailwind CSS** — utility-first styling for a clean, consistent UI.
+- **Responsive desktop and mobile layout** — adapts to any screen size.
+- **Real backend project data** — every value comes from the backend API.
+- **REST API integration** — consumes `/api/health` and `/api/dashboard`.
+- **Test execution status** — real PASS / FAIL / ERROR / SKIPPED counts.
+- **Fault analysis and evidence** — fault detection shown only from
+  evidence-backed states.
+- **RAG knowledge visualization** — requirement-to-knowledge retrieval view.
+- **Autonomous refinement results** — measured before/after coverage.
+- **Requirement-to-test traceability** — linked real IDs.
+- **Final reports** — access to the project's real reporting data.
+- **Accessibility support** — accessible markup and navigation.
+- **Reduced-motion support** — respects `prefers-reduced-motion`.
+- **No fabricated project telemetry** — nothing is invented; unavailable data is
+  surfaced honestly as an error or "Not available".
+
+### Backend API
+
+```text
+GET http://127.0.0.1:8877/api/health
+GET http://127.0.0.1:8877/api/dashboard
+```
+
+The backend URL is configurable via the `VITE_API_BASE_URL` environment
+variable (`frontend/.env`, see `frontend/.env.example`). By default it points
+to `http://127.0.0.1:8877`.
+
+### Frontend Structure
+
+The existing frontend structure under `frontend/`:
+
+```text
+frontend/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Sections.jsx
+│   │   ├── Workflow.jsx
+│   │   ├── cards.jsx
+│   │   ├── charts.jsx
+│   │   └── ui.jsx
+│   ├── api.js
+│   ├── App.jsx
+│   ├── data.js
+│   ├── index.css
+│   └── main.jsx
+├── .env.example
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
+```
+
+### Run the Frontend
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend normally runs at **http://localhost:5173**.
+
+Start the backend API + dashboard server first (from the `backend/` directory):
+
+```powershell
+cd backend
+python -m app.dashboard --port 8877
+```
+
+### Production Build
+
+```powershell
+npm run build
+```
+
+The production build was successfully verified and outputs to `frontend/dist/`.
+
+### Phase 15 Status
+
+**COMPLETE**
+
+Phase 15 is the **final project phase**. The React/Vite frontend is integrated
+with the existing Python backend and renders the project's real dashboard data.
 
 ## Development phases
 
-This project is built incrementally. Current status:
+This project was built incrementally. Current status:
 
 - [x] Phase 1 — Project setup & skeleton
 - [x] Phase 2 — IoT temperature sensor simulator
@@ -766,10 +944,5 @@ This project is built incrementally. Current status:
 - [x] Phase 11 — Autonomous refinement loop
 - [x] Phase 12 — Dashboard
 - [x] Phase 13 — End-to-end integration
-- [x] Phase 14 — Final testing, debugging & documentation  (complete)
-- [x] Phase 15 — React frontend  (**final phase, complete**)
-
-Phase 15 is the **final** phase of the project and is complete: the backend is
-unchanged (**668 tests pass**) and the React/Vite frontend renders the real
-project data. See the **Phase 15 — React Frontend** section above for setup,
-build, and data-flow details.
+- [x] Phase 14 — Final testing, debugging & documentation
+- [x] Phase 15 — React frontend
